@@ -73,38 +73,6 @@ Run the test suite:
 truffle test
 ```
 
-## Interacting with the Contract
-
-You can interact with the deployed contract using Truffle Console:
-
-1. Start Truffle Console:
-   ```
-   truffle console
-   ```
-
-2. Get an instance of the deployed contract:
-   ```javascript
-   let instance = await DecentralizedVoting.deployed()
-   ```
-
-3. Create a new proposal:
-   ```javascript
-   let accounts = await web3.eth.getAccounts()
-   let expirationTime = Math.floor(Date.now() / 1000) + 3600 // 1 hour from now
-   await instance.createProposal("Test Proposal", expirationTime, { from: accounts[0] })
-   ```
-
-4. Vote on a proposal:
-   ```javascript
-   await instance.vote(1, true, { from: accounts[1] })
-   ```
-
-5. Get proposal details:
-   ```javascript
-   let proposal = await instance.getProposalDetails(1)
-   console.log(proposal)
-   ```
-
 ## Design Decisions and Assumptions
 
 - The contract uses OpenZeppelin's `Counters` library for generating unique proposal IDs.
